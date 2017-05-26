@@ -11,7 +11,7 @@ controller.hears('url.*jira.*elasbit', 'direct_message,direct_mention', function
     var index = Math.floor(Math.random() * helloPool.length);
     bot.reply(message, "Deberías tenerla en un bookmark: https://elasbit.atlassian.net");
 });
-controller.hears('url.*jira.*villaflores,url.*jira.*commercerocks', 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['url.*jira.*villaflores', 'url.*jira.*commercerocks'], 'direct_message,direct_mention', function (bot, message) {
     var index = Math.floor(Math.random() * helloPool.length);
     bot.reply(message, "Esta está difícil estas justificado https://commercerocks.atlassian.net");
 });

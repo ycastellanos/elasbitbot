@@ -34,3 +34,8 @@ controller.hears(['fea'], 'direct_message,direct_mention', function (bot, messag
 controller.hears(['hora es','hora son','horas son'], 'direct_message,direct_mention', function (bot, message) {
     bot.reply(message, 'Tiempo de jugar FUTBOLIN!!!');
 });
+
+//Perra
+controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
+    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
+});

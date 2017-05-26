@@ -88,7 +88,8 @@ eval(fs.readFileSync('greetings.js')+'');
 eval(fs.readFileSync('jokes.js')+'');
 eval(fs.readFileSync('misc.js')+'');
 eval(fs.readFileSync('weather.js')+'');
-eval(fs.readFileSync('aws.js')+'');
+eval(fs.readFileSync('work.js')+'');
+eval(fs.readFileSync('jira.js')+'');
 
 controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var date1 = new Date(dateOfBirth);

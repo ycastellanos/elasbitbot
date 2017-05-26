@@ -67,28 +67,21 @@ controller.on('rtm_open', function (bot) {
     console.log('** The RTM api just connected!');
     var CronJob = require('cron').CronJob;
 
-    new CronJob('0 0 9 ? * MON,TUE,THU,FRI *', () => {
+    new CronJob('0 0 9 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Hello motherfuckers, recuerden que estoy por aquí",
         channel: 'C5JEQD5FV'
       });
     }, null, true, 'America/Santiago');
 
-    new CronJob('0 0 9 ? * MON,TUE,THU,FRI *', () => {
-      bot.say({
-        text: "Hello motherfuckers, recuerden que estoy por aquí",
-        channel: 'C5JEQD5FV'
-      });
-    }, null, true, 'America/Santiago');
-
-    new CronJob('0 0 13 ? * MON,TUE,THU,FRI *', () => {
+    new CronJob('0 0 13 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Ya va haciendo hambre, ¿quien va primero?",
         channel: 'C5JEQD5FV'
       });
     }, null, true, 'America/Santiago');
 
-    new CronJob('0 0 19 ? * MON,TUE,THU,FRI *', () => {
+    new CronJob('0 0 0 19 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Let's go!!! llegaron las 7:00 PM",
         channel: 'C5JEQD5FV'

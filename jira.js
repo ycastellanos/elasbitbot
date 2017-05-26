@@ -12,9 +12,9 @@ var jira = new JiraApi({
 });
 
 controller.hears('.*estado.*issue.*', 'direct_message,direct_mention', function (bot, message) {
-  console.log(message);
+  bot.reply(message, "OK dejame chequear eso... ");
   issueNumber = "";
-  myRegexp = /([[A-Z][A-Z][A-Z][A-Z][A-Z]-\d+|A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z]-\d+)/g;
+  myRegexp = /([A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z][A-Z]-\d+)/g;
   match = myRegexp.exec(message.text);
   issueNumber = match[1]
   jira.findIssue(issueNumber)

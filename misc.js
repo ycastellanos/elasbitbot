@@ -20,9 +20,14 @@ answerPool[2] = 'Y tu no?';
 answerPool[3] = 'Mejor hago como que no leí...';
 answerPool[4] = 'Voy a hacerme la idea de que no dijiste nada...';
 
-controller.hears(['burra','mala','pasada','tonta', 'estupida'], 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['burra','mala','pesada','tonta', 'estupida'], 'direct_message,direct_mention', function (bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
   bot.reply(message, answerPool[index]);
+});
+
+controller.hears(['fea'], 'direct_message,direct_mention', function (bot, message) {
+  var index = Math.floor(Math.random() * answerPool.length);
+  bot.reply(message, 'Como lo sabes si nunca me has visto? Te podria sorprender, al menos soy más joven que tu.');
 });
 
 // La hora

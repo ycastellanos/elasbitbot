@@ -9,7 +9,7 @@ helloPool[6] = 'Dime jamon';
 helloPool[7] = 'Que bolerin, JAMON!';
 
 // Saludos
-controller.hears(['hi','hola','hello','whats up','que bola','que vuelta','que vueltilla','que bolero','que bolerin'], 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['hola','hello','whats up','que bola','que vuelta','que vueltilla','que bolero','que bolerin'], 'direct_message,direct_mention', function (bot, message) {
     var index = Math.floor(Math.random() * helloPool.length);
     bot.reply(message, helloPool[index]);
 });

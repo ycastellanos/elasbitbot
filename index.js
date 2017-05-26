@@ -65,6 +65,35 @@ if (process.env.TOKEN || process.env.SLACK_TOKEN) {
 // Handle events related to the websocket connection to Slack
 controller.on('rtm_open', function (bot) {
     console.log('** The RTM api just connected!');
+    var CronJob = require('cron').CronJob;
+
+    new CronJob('0 0 9 ? * MON,TUE,THU,FRI *', () => {
+      bot.say({
+        text: "Hello motherfuckers, recuerden que estoy por aquí",
+        channel: 'C5JEQD5FV'
+      });
+    }, null, true, 'America/Santiago');
+
+    new CronJob('0 0 9 ? * MON,TUE,THU,FRI *', () => {
+      bot.say({
+        text: "Hello motherfuckers, recuerden que estoy por aquí",
+        channel: 'C5JEQD5FV'
+      });
+    }, null, true, 'America/Santiago');
+
+    new CronJob('0 0 13 ? * MON,TUE,THU,FRI *', () => {
+      bot.say({
+        text: "Ya va haciendo hambre, ¿quien va primero?",
+        channel: 'C5JEQD5FV'
+      });
+    }, null, true, 'America/Santiago');
+
+    new CronJob('0 0 19 ? * MON,TUE,THU,FRI *', () => {
+      bot.say({
+        text: "Let's go!!! llegaron las 7:00 PM",
+        channel: 'C5JEQD5FV'
+      });
+    }, null, true, 'America/Santiago');
 });
 
 controller.on('rtm_close', function (bot) {
@@ -97,10 +126,10 @@ controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
    if (diffDays == 1){
-     bot.reply(message, 'Es conmigo?, no entendi :( mis capacidades aun son limitadas, solo tengo ' + diffDays + ' día de nacida');
+     bot.reply(message, '¿Es conmigo?, no entendi, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' día de nacida');
    } else if (diffDays > 1){
-     bot.reply(message, 'Es conmigo?, no entendi :( mis capacidades aun son limitadas, solo tengo ' + diffDays + ' días de nacida');
+     bot.reply(message, '¿Es conmigo?, no entendi, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' días de nacida');
    } else {
-     bot.reply(message, 'Es conmigo?, no entendi :( mis capacidades aun son limitadas solo tengo unas horas de nacida');
+     bot.reply(message, '¿Es conmigo?, no entendi, considera que  mis capacidades aun son limitadas solo tengo unas horas de nacida');
    }
 });

@@ -20,7 +20,7 @@ answerPool[2] = 'Y tu no?';
 answerPool[3] = 'Mejor hago como que no leí...';
 answerPool[4] = 'Voy a hacerme la idea de que no dijiste nada...';
 
-controller.hears(['burra','mala','pesada','tonta', 'estupida'], 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['burra','mala','bad','pesada','tonta', 'estupida'], 'direct_message,direct_mention', function (bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
   bot.reply(message, answerPool[index]);
 });
@@ -38,4 +38,14 @@ controller.hears(['hora es','hora son','horas son'], 'direct_message,direct_ment
 //Perra
 controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
     bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
+});
+
+//callar
+controller.hears(['callate','shut up'], 'direct_message, direct_mention', function (bot, message) {
+    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
+});
+
+//aware
+controller.hears(['jasmine'], 'mention', function (bot, message) {
+    bot.reply(message, 'Estan hablando de mi, los estoy vigilando.');
 });

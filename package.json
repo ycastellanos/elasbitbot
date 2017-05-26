@@ -1,0 +1,32 @@
+{
+  "name": "eelasbit-bot",
+  "version": "1.0.0",
+  "description": "Elasbit Management Bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEGoodmanWilson/easy-peasy-bot-app.git"
+  },
+  "keywords": [
+    "slack",
+    "bot"
+  ],
+  "author": "Yanier Castellanos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DEGoodmanWilson/easy-peasy-bot-app/issues"
+  },
+  "homepage": "https://github.com/DEGoodmanWilson/easy-peasy-bot-app#readme",
+  "engines": {
+    "node": "5.1.1"
+  },
+  "dependencies": {
+    "botkit": "0.2.2",
+    "request": "2.81.0",
+    "cheerio": "0.22.0"
+  }
+}

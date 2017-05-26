@@ -19,7 +19,12 @@ controller.hears('.*estado.*issue.*', 'direct_message,direct_mention', function 
   issueNumber = match[1]
   jira.findIssue(issueNumber)
   .then(function(issue) {
-    bot.reply(message, 'El estado del issue ' + issueNumber + ' es: ' + issue.fields.status.name);
+    bot.reply(message, 'El estado del issue ' + issueNumber + ' ' + issue.fields.summary + ' es: ' + issue.fields.status.name);
+    if (issue.fields.status.name == "Done"){
+      bot.reply(message, 'Se gentil y felicita a ' + issue.fields.assignee.name + ' por el buen trabajo');
+    } else {
+      bot.reply(message, 'Pssss... por si te interesa, el issue esta asignado a ' + issue.fields.assignee.name + '. Ojo yo no he dicho nada');
+    }
   })
   .catch(function(err) {
     bot.reply(message, "No pude determinar el estado: " + err);

@@ -74,10 +74,10 @@ controller.hears(['worklog-ask'],'direct_message,direct_mention', RecastaiMiddle
 
   db = db.connect(folder2, ['worklogs']);
   result = db.worklogs.find({user : message.user});
-  resultText = "Aquí tienes:\n";
+  resultText = "Aquí tienes los mensajes que has logeado:\n";
   for (var i in result) {
     entity = result[i];
-    resultText += entity.date + " - " + entity.hours + " " + entity.text + "\n";
+    resultText += entity.date + " - " + entity.hours + " - " + entity.text + "\n";
   }
 
   bot.reply(message, resultText);

@@ -6,7 +6,7 @@ controller.hears(['worklog'],'direct_message,direct_mention', RecastaiMiddleware
   try {
     myRegexp = /(\d+h)/g;
     match = myRegexp.exec(message.text);
-    matchedHours = match[1];
+    hours = match[1];
   } catch (err) {
     console.log(err);
     hours = "1h";

@@ -15,7 +15,7 @@ controller.hears(['jira-issue'],'direct_message,direct_mention', RecastaiMiddlew
   bot.reply(message, "OK dejame chequear eso... ");
   issueNumber = "";
   myRegexp = /([A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z][A-Z]-\d+)/g;
-  match = myRegexp.exec(message.text);
+  match = myRegexp.exec(message.source);
   issueNumber = match[1]
   jira.findIssue(issueNumber)
   .then(function(issue) {

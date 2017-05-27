@@ -106,18 +106,21 @@ controller.on('bot_channel_join', function (bot, message) {
 
 var RecastaiMiddleware = require('botkit-middleware-recastai')({
         request_token: '4047940713542fe59659ad96b9072aee',
-        confidence: 0.4
+        confidence: 0.4,
+        language: "ES"
 });
 
 controller.middleware.receive.use(RecastaiMiddleware.receive);
 
 // Includes
+
+eval(fs.readFileSync('work.js')+'');
+eval(fs.readFileSync('misc.js')+'');
 eval(fs.readFileSync('greetings.js')+'');
 eval(fs.readFileSync('jokes.js')+'');
-eval(fs.readFileSync('misc.js')+'');
 eval(fs.readFileSync('weather.js')+'');
-eval(fs.readFileSync('work.js')+'');
 eval(fs.readFileSync('jira.js')+'');
+eval(fs.readFileSync('worklog.js')+'');
 
 
 
@@ -126,11 +129,16 @@ controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var date2 = new Date();
    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-   if (diffDays == 1){
-     bot.reply(message, '¿Es conmigo?, no entendi, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' día de nacida');
-   } else if (diffDays > 1){
-     bot.reply(message, '¿Es conmigo?, no entendi, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' días de nacida');
-   } else {
-     bot.reply(message, '¿Es conmigo?, no entendi, considera que  mis capacidades aun son limitadas solo tengo unas horas de nacida');
-   }
+
+   bot.api.users.info({user: message.user}, (error, response) => {
+        if (diffDays == 1){
+          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' día de nacida');
+        } else if (diffDays > 1){
+          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' días de nacida');
+        } else {
+          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que  mis capacidades aun son limitadas solo tengo unas horas de nacida');
+        }
+    });
+
+
 });

@@ -16,7 +16,6 @@ helloPool[7] = 'Que bolerin, JAMON!';
 // });
 
 controller.hears(['greetings'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
-  console.log(message);
   var index = Math.floor(Math.random() * helloPool.length);
   bot.reply(message, helloPool[index]);
 });

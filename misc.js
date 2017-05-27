@@ -53,7 +53,7 @@ controller.hears(['callate','shut up'], 'direct_message, direct_mention', functi
 });
 
 //viajar
-controller.hears(['viaje'], 'direct_message, direct_mention', function (bot, message) {
+controller.hears(['viaje'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * viajePool.length);
   bot.reply(message, viajePool[index]);
 });

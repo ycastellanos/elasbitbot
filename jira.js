@@ -10,8 +10,8 @@ var jira = new JiraApi({
   apiVersion: '2',
   strictSSL: true
 });
-
-controller.hears('.*estado.*issue.*', 'direct_message,direct_mention', function (bot, message) {
+//jira-issue
+controller.hears(['jira-issue'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   bot.reply(message, "OK dejame chequear eso... ");
   issueNumber = "";
   myRegexp = /([A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z][A-Z]-\d+)/g;

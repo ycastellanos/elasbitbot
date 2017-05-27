@@ -104,6 +104,12 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "Estoy aqui, jamons")
 });
 
+var RecastaiMiddleware = require('botkit-middleware-recastai')({
+        request_token: '4047940713542fe59659ad96b9072aee',
+        confidence: 0.4
+});
+
+controller.middleware.receive.use(RecastaiMiddleware.receive);
 
 // Includes
 eval(fs.readFileSync('greetings.js')+'');
@@ -112,6 +118,8 @@ eval(fs.readFileSync('misc.js')+'');
 eval(fs.readFileSync('weather.js')+'');
 eval(fs.readFileSync('work.js')+'');
 eval(fs.readFileSync('jira.js')+'');
+
+
 
 controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var date1 = new Date(dateOfBirth);

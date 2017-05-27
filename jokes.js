@@ -6,11 +6,7 @@ jokePool[3] = '¿Cómo se queda un mago después de comer?\nMagordito...';
 jokePool[4] = '¿Para qué va una caja al gimnasio?\n¡Para hacerse caja fuerte!';
 
 //Chistes
-controller.hears('joke', 'direct_message,direct_mention', function (bot, message) {
-    var index = Math.floor(Math.random() * jokePool.length);
-    bot.reply(message, jokePool[index]);
-});
-controller.hears('chiste', 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   try {
     var jokeStr = "";
     var request = require('request');

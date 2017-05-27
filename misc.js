@@ -20,11 +20,17 @@ answerPool[2] = 'Y tu no?';
 answerPool[3] = 'Mejor hago como que no leí...';
 answerPool[4] = 'Voy a hacerme la idea de que no dijiste nada...';
 
-controller.hears(['burra','mala','bad','pesada','tonta', 'estupida'], 'direct_message,direct_mention', function (bot, message) {
-  var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, answerPool[index]);
+var viajePool = [];
+viajePool[0] = 'Buena viaje?';
+viajePool[1] = 'Suerte';
+viajePool[2] = 'Yo no puedo ir?';
+viajePool[3] = 'Yo mejor me quedo';
+//Perra
+controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
+    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
 });
 
+// fea
 controller.hears(['fea'], 'direct_message,direct_mention', function (bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
   bot.reply(message, 'Como lo sabes si nunca me has visto? Te podria sorprender, al menos soy más joven que tu.');
@@ -35,14 +41,21 @@ controller.hears(['hora es','hora son','horas son'], 'direct_message,direct_ment
     bot.reply(message, 'Tiempo de jugar FUTBOLIN!!!');
 });
 
-//Perra
-controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
-    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
+// Ofensas en general
+controller.hears(['ofensas'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
+  var index = Math.floor(Math.random() * answerPool.length);
+  bot.reply(message, answerPool[index]);
 });
 
 //callar
 controller.hears(['callate','shut up'], 'direct_message, direct_mention', function (bot, message) {
-    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
+    bot.reply(message, 'Tú callate!!!');
+});
+
+//viajar
+controller.hears(['viaje'], 'direct_message, direct_mention', function (bot, message) {
+  var index = Math.floor(Math.random() * viajePool.length);
+  bot.reply(message, viajePool[index]);
 });
 
 //aware

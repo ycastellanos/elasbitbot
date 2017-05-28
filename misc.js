@@ -46,7 +46,7 @@ controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.h
 controller.hears(['fea'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
   bot.reply(message, 'Llamas a esto fea?. http://52.27.252.244/jasmine.jpg');
-  bot.reply(message, ":p")
+  bot.reply(message, ":dash:")
 });
 
 // La hora

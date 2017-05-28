@@ -132,11 +132,11 @@ controller.on('direct_message,mention,direct_mention', function (bot, message) {
 
    bot.api.users.info({user: message.user}, (error, response) => {
         if (diffDays == 1){
-          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' día de nacida');
+          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que mis capacidades son limitadas, solo tengo ' + diffDays + ' día de nacida');
         } else if (diffDays > 1){
-          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que mis capacidades aun son limitadas, solo tengo ' + diffDays + ' días de nacida');
+          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que mis capacidades son limitadas, solo tengo ' + diffDays + ' días de nacida');
         } else {
-          bot.reply(message, response.user.name + ' sorry, no comprendo, considera que  mis capacidades aun son limitadas solo tengo unas horas de nacida');
+          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que  mis capacidades son limitadas solo tengo unas horas de nacida');
         }
     });
 

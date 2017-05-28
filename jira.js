@@ -13,9 +13,10 @@ var jira = new JiraApi({
 //jira-issue
 controller.hears(['jira-issue'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   bot.reply(message, "OK dejame chequear eso... ");
+  try {
   issueNumber = "";
   myRegexp = /([A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z]-\d+|[A-Z][A-Z][A-Z][A-Z][A-Z]-\d+)/g;
-  match = myRegexp.exec(message.source);
+  match = myRegexp.exec(message.text);
   issueNumber = match[1]
   jira.findIssue(issueNumber)
   .then(function(issue) {
@@ -27,7 +28,10 @@ controller.hears(['jira-issue'],'direct_message,direct_mention', RecastaiMiddlew
     }
   })
   .catch(function(err) {
-    bot.reply(message, "No pude determinar el estado: " + err);
+    bot.reply(message, "Uff, el jira esta mareado, no pude comunicarme con el");
   });
+} catch (err){
+  bot.reply(message, "Ups, no encontre nada...");
+}
 
 });

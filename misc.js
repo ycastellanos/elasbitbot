@@ -62,7 +62,6 @@ controller.hears(['ofensas'],'direct_message,direct_mention', RecastaiMiddleware
      var index = Math.floor(Math.random() * answerPool.length);
      var replyStr = answerPool[index];
      replyStr = replyStr.replace("{user}", response.user.name);
-     replyStr = replyStr.replace("{age}", diffDays + "");
      bot.reply(message, replyStr);
   });
 });

@@ -29,7 +29,7 @@ viajePool[1] = 'Suerte';
 viajePool[2] = 'Yo no puedo ir?';
 viajePool[3] = 'Yo mejor me quedo';
 //Perra
-controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   bot.api.users.info({user: message.user}, (error, response) => {
      var replyStr = "";
      if (response.user.name == "mlmorilla"){
@@ -43,7 +43,7 @@ controller.hears(['perra'], 'direct_message,direct_mention', function (bot, mess
 });
 
 // fea
-controller.hears(['fea'], 'direct_message,direct_mention', function (bot, message) {
+controller.hears(['fea'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
   bot.reply(message, 'Llamas a esto fea?. http://www.fmdos.cl/wp-content/uploads/2015/11/o-ALESSANDRA-AMBROSIO-facebook.jpg');
 });

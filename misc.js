@@ -35,7 +35,7 @@ controller.hears(['perra'], 'direct_message,direct_mention', function (bot, mess
      if (response.user.name == "mlmorilla"){
        replyStr = 'Grrrrrr, lourdes!!!. A que te muerdo para que te de rabia';
      } else {
-       replyStr = 'Oye {user}, eso solo melo dice lourdes, se mas original';
+       replyStr = 'Oye {user}, eso solo melo dice Lourdes, se más original';
        replyStr = replyStr.replace("{user}", response.user.name);
      }
      bot.reply(message, replyStr);
@@ -45,7 +45,7 @@ controller.hears(['perra'], 'direct_message,direct_mention', function (bot, mess
 // fea
 controller.hears(['fea'], 'direct_message,direct_mention', function (bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, 'Como lo sabes si nunca me has visto? Te podria sorprender, al menos soy más joven que tu.');
+  bot.reply(message, 'Llamas a esto fea?. http://www.fmdos.cl/wp-content/uploads/2015/11/o-ALESSANDRA-AMBROSIO-facebook.jpg');
 });
 
 // La hora

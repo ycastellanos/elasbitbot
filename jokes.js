@@ -33,6 +33,8 @@ controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.
         var index = Math.floor(Math.random() * jokePool.length);
         bot.reply(message, jokePool[index]);
       }
+
+      bot.reply(message, ":>");
     });
 
   } catch (err){

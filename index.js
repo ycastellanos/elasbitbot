@@ -124,10 +124,10 @@ eval(fs.readFileSync('worklog.js')+'');
 
 
 var defaultPool = [];
-defaultPool[0] = 'Lo siento {user} , no comprendo, recuerda que mis capacidades son limitadas, solo tengo {age} días de nacida';
-defaultPool[1] = '¿Eso fue conmigo?';
-defaultPool[2] = 'No se de que hablas';
-defaultPool[3] = 'Cuando digas algo que yo entienda, te respondo...';
+defaultPool[0] = ':confused: Lo siento {user} , no comprendo, recuerda que mis capacidades son limitadas, solo tengo {age} días de nacida';
+defaultPool[1] = ':confused: ¿Eso fue conmigo?';
+defaultPool[2] = ':confused: No se de que hablas';
+defaultPool[3] = ':confused: Cuando digas algo que yo entienda, te respondo...';
 
 controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var date1 = new Date(dateOfBirth);

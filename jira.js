@@ -28,10 +28,10 @@ controller.hears(['jira-issue'],'direct_message,direct_mention', RecastaiMiddlew
     }
   })
   .catch(function(err) {
-    bot.reply(message, "Uff, el jira esta mareado, no pude comunicarme con el");
+    bot.reply(message, ":confused: Uff, el jira esta mareado, no pude comunicarme con el");
   });
 } catch (err){
-  bot.reply(message, "Ups, no encontre nada...");
+  bot.reply(message, ":confused: Ups, no encontre nada...");
 }
 
 });

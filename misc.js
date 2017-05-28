@@ -59,8 +59,8 @@ controller.hears(['ofensas'],'direct_message,direct_mention', RecastaiMiddleware
   var replyStr = answerPool[index];
 
   bot.api.users.info({user: message.user}, (error, response) => {
-     var index = Math.floor(Math.random() * defaultPool.length);
-     var replyStr = defaultPool[index];
+     var index = Math.floor(Math.random() * answerPool.length);
+     var replyStr = answerPool[index];
      replyStr = replyStr.replace("{user}", response.user.name);
      replyStr = replyStr.replace("{age}", diffDays + "");
      bot.reply(message, replyStr);

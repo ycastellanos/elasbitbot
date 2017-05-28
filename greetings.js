@@ -1,12 +1,12 @@
 var helloPool = [];
-helloPool[0] = 'Que bola!';
-helloPool[1] = 'Que onda!';
-helloPool[2] = 'Como esta la timba!';
-helloPool[3] = 'Que vueltilla!';
+helloPool[0] = 'Que bola! :sunglasses:';
+helloPool[1] = 'Que onda! :sunglasses:';
+helloPool[2] = 'Como esta la timba! :sunglasses:';
+helloPool[3] = 'Que vueltilla! :sunglasses:';
 helloPool[4] = 'Que bolero!';
 helloPool[5] = 'Hola estimada/o';
-helloPool[6] = 'Dime jamon ;-p';
-helloPool[7] = 'Que bolerin 8)';
+helloPool[6] = 'Dime jamon :sunglasses:';
+helloPool[7] = 'Que bolerin :sunglasses:';
 
 // Saludos
 // controller.hears(['hola','hello','whats up','que bola','que vuelta','que vueltilla','que bolero','que bolerin'], 'direct_message,direct_mention', function (bot, message) {

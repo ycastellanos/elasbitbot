@@ -34,7 +34,7 @@ controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.
         bot.reply(message, jokePool[index]);
       }
 
-      bot.reply(message, ":>");
+      bot.reply(message, ":joy:");
     });
 
   } catch (err){

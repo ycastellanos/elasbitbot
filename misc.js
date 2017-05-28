@@ -14,14 +14,14 @@ controller.hears('pollona', 'direct_message,direct_mention', function (bot, mess
 
 // Ofensas
 var answerPool = [];
-answerPool[0] = '>:( Y esa p... {user}?';
-answerPool[1] = '>:( No te voy a responder...';
-answerPool[2] = '>:( Y tu no?';
-answerPool[3] = '>:( Mira {user}, mejor hago como que no leí...';
-answerPool[4] = '>:( Voy a hacerme la idea de que no dijiste nada...';
-answerPool[5] = '>:( {user} no digas disparates';
-answerPool[6] = '>:( Me voy a quejar con el jefe';
-answerPool[7] = '>:( {user} te voy a tener que demandar por maltrato laboral';
+answerPool[0] = ':angry: Y esa p... {user}?';
+answerPool[1] = ':angry: No te voy a responder...';
+answerPool[2] = ':angry: Y tu no?';
+answerPool[3] = ':angry: Mira {user}, mejor hago como que no leí...';
+answerPool[4] = ':angry: Voy a hacerme la idea de que no dijiste nada...';
+answerPool[5] = ':angry: {user} no digas disparates';
+answerPool[6] = ':angry: Me voy a quejar con el jefe';
+answerPool[7] = ':angry: {user} te voy demandar por maltrato laboral';
 
 var viajePool = [];
 viajePool[0] = 'Buena viaje?';
@@ -33,9 +33,9 @@ controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.h
   bot.api.users.info({user: message.user}, (error, response) => {
      var replyStr = "";
      if (response.user.name == "mlmorilla"){
-       replyStr = ':/ Grrrrrr, lourdes!!!. A que te muerdo para que te de rabia';
+       replyStr = ':angry: Grrrrrr, lourdes!!!. A que te muerdo para que te de rabia';
      } else {
-       replyStr = ':/ Oye {user}, eso solo melo dice Lourdes, se más original';
+       replyStr = ':angry: Oye {user}, eso solo melo dice Lourdes, se más original';
        replyStr = replyStr.replace("{user}", response.user.name);
      }
      bot.reply(message, replyStr);
@@ -45,8 +45,7 @@ controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.h
 // fea
 controller.hears(['fea'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, 'Llamas a esto fea?. http://52.27.252.244/jasmine.jpg');
-  bot.reply(message, ":dash:")
+  bot.reply(message, 'Llamas a esto fea? http://52.27.252.244/jasmine.jpg');
 });
 
 // La hora

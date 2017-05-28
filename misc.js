@@ -44,8 +44,18 @@ controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.h
 
 // fea
 controller.hears(['fea'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
-  var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, 'http://52.27.252.244/jasmine.jpg');
+  msg = {
+    "attachments": [
+        {
+            "fallback": "Mi foto",
+            "text": "Mira mi foto",
+            "image_url": "http://52.27.252.244/jasmine.jpg",
+            "thumb_url": "http://52.27.252.244/jasmine.jpg"
+        }
+    ]
+  };
+
+  bot.reply(message, msg);
   bot.reply(message, '¿Tu crees?');
 });
 

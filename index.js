@@ -123,6 +123,11 @@ eval(fs.readFileSync('jira.js')+'');
 eval(fs.readFileSync('worklog.js')+'');
 
 
+var defaultPool = [];
+defaultPool[0] = 'Lo siento {user} , no comprendo, recuerda que mis capacidades son limitadas, solo tengo {age} día de nacida';
+defaultPool[1] = '¿Eso fue conmigo?';
+defaultPool[2] = 'No se de que hablas';
+defaultPool[3] = 'Cuando digas algo que yo entienda, te respondo...';
 
 controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var date1 = new Date(dateOfBirth);
@@ -131,14 +136,10 @@ controller.on('direct_message,mention,direct_mention', function (bot, message) {
    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
    bot.api.users.info({user: message.user}, (error, response) => {
-        if (diffDays == 1){
-          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que mis capacidades son limitadas, solo tengo ' + diffDays + ' día de nacida');
-        } else if (diffDays > 1){
-          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que mis capacidades son limitadas, solo tengo ' + diffDays + ' días de nacida');
-        } else {
-          bot.reply(message, 'Lo siento ' + response.user.name + ' , no comprendo, recuerda que  mis capacidades son limitadas solo tengo unas horas de nacida');
-        }
+      var index = Math.floor(Math.random() * defaultPool.length);
+      var replyStr = defaultPool[index];
+      replyStr = replyStr.replace("{user}", response.user.name);
+      replyStr = replyStr.replace("{age}", diffDays + "");
+      bot.reply(message, replyStr);
     });
-
-
 });

@@ -14,11 +14,14 @@ controller.hears('pollona', 'direct_message,direct_mention', function (bot, mess
 
 // Ofensas
 var answerPool = [];
-answerPool[0] = 'Y esa p...?';
+answerPool[0] = 'Y esa p... {user}?';
 answerPool[1] = 'No te voy a responder...';
 answerPool[2] = 'Y tu no?';
-answerPool[3] = 'Mejor hago como que no leí...';
+answerPool[3] = 'Mira {user}, mejor hago como que no leí...';
 answerPool[4] = 'Voy a hacerme la idea de que no dijiste nada...';
+answerPool[5] = '{user} no digas disparates';
+answerPool[6] = 'Me voy a quejar con el jefe';
+answerPool[7] = '{user} te voy a tener que demandar por maltrato laboral';
 
 var viajePool = [];
 viajePool[0] = 'Buena viaje?';
@@ -27,6 +30,16 @@ viajePool[2] = 'Yo no puedo ir?';
 viajePool[3] = 'Yo mejor me quedo';
 //Perra
 controller.hears(['perra'], 'direct_message,direct_mention', function (bot, message) {
+  bot.api.users.info({user: message.user}, (error, response) => {
+     var replyStr = "";
+     if (response.user.name == "mlmorilla"){
+       replyStr = 'Grrrrrr, lourdes!!!. A que te muerdo para que te de rabia';
+     } else {
+       replyStr = 'Oye {user}, eso solo melo dice lourdes, se mas original';
+       replyStr = replyStr.replace("{user}", response.user.name);
+     }
+     bot.reply(message, replyStr);
+  });
     bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
 });
 
@@ -44,7 +57,15 @@ controller.hears(['hora es','hora son','horas son'], 'direct_message,direct_ment
 // Ofensas en general
 controller.hears(['ofensas'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, answerPool[index]);
+  var replyStr = answerPool[index];
+
+  bot.api.users.info({user: message.user}, (error, response) => {
+     var index = Math.floor(Math.random() * defaultPool.length);
+     var replyStr = defaultPool[index];
+     replyStr = replyStr.replace("{user}", response.user.name);
+     replyStr = replyStr.replace("{age}", diffDays + "");
+     bot.reply(message, replyStr);
+  });
 });
 
 //callar

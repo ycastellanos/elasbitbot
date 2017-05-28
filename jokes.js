@@ -10,10 +10,14 @@ controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.
   try {
     var jokeStr = "";
     var request = require('request');
-    var op = Math.floor(Math.random() * 3);
+    var op = Math.floor(Math.random() * 5);
     if (op == 0) {
       bot.reply(message, "Ok, dejame pensarlo...");
     }else if (op == 1){
+      bot.reply(message, "Deja ver que puedo hacer...");
+    }else if (op == 2){
+      bot.reply(message, "Quizá pueda hacer algo por ti...");
+    }else if (op == 3){
       bot.reply(message, "Voy pa ti...");
     }else{
       bot.reply(message, "Perame...");

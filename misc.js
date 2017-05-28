@@ -40,7 +40,6 @@ controller.hears(['perra'], 'direct_message,direct_mention', function (bot, mess
      }
      bot.reply(message, replyStr);
   });
-    bot.reply(message, 'Grrrrrr, serás Lourdes? a que te muerdo para que te de rabia!!!');
 });
 
 // fea

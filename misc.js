@@ -45,7 +45,7 @@ controller.hears(['perra'],'direct_message,direct_mention', RecastaiMiddleware.h
 // fea
 controller.hears(['fea'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var index = Math.floor(Math.random() * answerPool.length);
-  bot.reply(message, 'Llamas a esto fea?. http://www.fmdos.cl/wp-content/uploads/2015/11/o-ALESSANDRA-AMBROSIO-facebook.jpg');
+  bot.reply(message, 'Llamas a esto fea?. http://52.27.252.244/jasmine.jpg');
 });
 
 // La hora

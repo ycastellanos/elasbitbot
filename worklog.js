@@ -42,7 +42,7 @@ controller.hears(['worklog'],'direct_message,direct_mention', RecastaiMiddleware
   db = db.connect(folder2, ['worklogs']);
   db.worklogs.save(worklog);
 
-  bot.reply(message, "Ok, anotado :-)");
+  bot.reply(message, "Ok, anotado :thumbsup:");
 });
 
 controller.hears(['worklog-ask'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {

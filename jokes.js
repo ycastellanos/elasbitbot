@@ -12,7 +12,7 @@ controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.
     var request = require('request');
     var op = Math.floor(Math.random() * 5);
     if (op == 0) {
-      bot.reply(message, "Ok, dejame pensarlo...");
+      bot.reply(message, "Ok, vamos a ver...");
     }else if (op == 1){
       bot.reply(message, "Deja ver que puedo hacer...");
     }else if (op == 2){

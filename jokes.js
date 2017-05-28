@@ -12,15 +12,15 @@ controller.hears(['chiste'],'direct_message,direct_mention', RecastaiMiddleware.
     var request = require('request');
     var op = Math.floor(Math.random() * 5);
     if (op == 0) {
-      bot.reply(message, "Ok, vamos a ver...");
+      bot.reply(message, "Ok, vamos a ver... :confounded:");
     }else if (op == 1){
-      bot.reply(message, "Deja ver que puedo hacer...");
+      bot.reply(message, "Deja ver que puedo hacer... :confounded:");
     }else if (op == 2){
-      bot.reply(message, "Quizá pueda hacer algo por ti...");
+      bot.reply(message, "Quizá pueda hacer algo por ti... :confounded:");
     }else if (op == 3){
       bot.reply(message, "Voy pa ti...");
     }else{
-      bot.reply(message, "Perame...");
+      bot.reply(message, "Perame... :confounded:");
     }
 
     request('http://www.chistescortos.eu/random', function (error, response, body) {

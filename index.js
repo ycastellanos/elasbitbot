@@ -124,7 +124,7 @@ eval(fs.readFileSync('worklog.js')+'');
 
 
 var defaultPool = [];
-defaultPool[0] = 'Lo siento {user} , no comprendo, recuerda que mis capacidades son limitadas, solo tengo {age} día de nacida';
+defaultPool[0] = 'Lo siento {user} , no comprendo, recuerda que mis capacidades son limitadas, solo tengo {age} días de nacida';
 defaultPool[1] = '¿Eso fue conmigo?';
 defaultPool[2] = 'No se de que hablas';
 defaultPool[3] = 'Cuando digas algo que yo entienda, te respondo...';

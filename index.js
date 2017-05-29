@@ -86,6 +86,10 @@ controller.on('rtm_open', function (bot) {
         text: "Let's go!!! :stuck_out_tongue_winking_eye: llegaron las 7:00 PM",
         channel: 'C5J06NMBK'
       });
+      bot.say({
+        text: "Yanier acuerdate de los pozuelos...",
+        channel: 'C5J06NMBK'
+      });
     }, null, true, 'America/Santiago');
 });
 

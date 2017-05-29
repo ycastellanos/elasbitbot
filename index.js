@@ -70,21 +70,21 @@ controller.on('rtm_open', function (bot) {
     new CronJob('0 0 10 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Hello motherfuckers :sunglasses:, recuerden que estoy por aquí",
-        channel: 'C5JEQD5FV'
+        channel: 'C5J06NMBK'
       });
     }, null, true, 'America/Santiago');
 
     new CronJob('0 0 14 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Ya va haciendo hambre :poultry_leg:, ¿quien va primero?",
-        channel: 'C5JEQD5FV'
+        channel: 'C5J06NMBK'
       });
     }, null, true, 'America/Santiago');
 
     new CronJob('0 0 0 20 * * 1,2,3,4,5', () => {
       bot.say({
         text: "Let's go!!! :stuck_out_tongue_winking_eye: llegaron las 7:00 PM",
-        channel: 'C5JEQD5FV'
+        channel: 'C5J06NMBK'
       });
     }, null, true, 'America/Santiago');
 });

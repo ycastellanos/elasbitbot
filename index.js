@@ -125,6 +125,7 @@ eval(fs.readFileSync('jokes.js')+'');
 eval(fs.readFileSync('weather.js')+'');
 eval(fs.readFileSync('jira.js')+'');
 eval(fs.readFileSync('worklog.js')+'');
+eval(fs.readFileSync('futbolin.js')+'');
 
 
 var defaultPool = [];

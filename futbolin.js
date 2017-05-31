@@ -1,5 +1,6 @@
 controller.hears(['futbolin'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
   var team = "yanier";
+  var count = 1;
   try {
     myRegexp = /\[(.*?)\]/g;
     match = myRegexp.exec(message.text);
@@ -9,9 +10,18 @@ controller.hears(['futbolin'],'direct_message,direct_mention', RecastaiMiddlewar
     team = "yanier";
   }
 
+  try {
+    myRegexp = /(\d)/g;
+    match = myRegexp.exec(message.text);
+    count = match[1];
+  } catch (err) {
+    console.log(err);
+    count = "1";
+  }
+
   // Sanitize team
   team = team.toLowerCase();
-  team = team.replace(" y ", "");
+  team = team.replace(" y ", " ");
   team = team.replace("lurdes", "lourdes");
   team = team.replace("lurde", "lourdes");
   team = team.replace("yaima", "yahima");
@@ -24,64 +34,80 @@ controller.hears(['futbolin'],'direct_message,direct_mention', RecastaiMiddlewar
   team = team.replace("jos", "jose");
   team = team.replace("josfh", "jose");
   team = team.replace("joseito", "jose");
-  team = team.replace("papo", "tornes");
-  team = team.replace("torne", "tornes");
-  team = team.replace("yordanis", "tornes");
-  team = team.replace("yornadi", "tornes");
+  team = team.replace("tornes", "papo");
+  team = team.replace("torne", "papo");
+  team = team.replace("ytornes", "papo");
+  team = team.replace("yordanis", "papo");
+  team = team.replace("yornadi", "papo");
   team = team.replace("elisabet", "elisa");
   team = team.replace("elisabeth", "elisa");
   team = team.replace("eli", "elisa");
   team = team.replace("eliza", "elisa");
   teamPars = team.toLowerCase().split(" ");
-  teamPars.sort(function(a,b) {return (a > b) ? 1 : ((b > a) ? -1 : 0);} );
+  var teamParsSorted = teamPars.sort(function(a,b) {return a.localeCompare(b);} );
+  console.log(teamParsSorted);
   teamSanitized = "";
-  for (var i in teamPars) {
-    teamSanitized += teamPars[i] + " ";
+  for (var i in teamParsSorted) {
+    if (i < teamPars.length - 1)
+      teamSanitized = teamSanitized + teamParsSorted[i] + "-";
+    else
+      teamSanitized = teamSanitized + teamParsSorted[i];
   }
 
-  var db = require('diskdb');
-  var resolve = require('path').resolve;
-  var folder = resolve('db/futbolin');
-  var fs = require('fs');
+  console.log(teamSanitized);
 
-  if (!fs.existsSync(folder)){
-      fs.mkdirSync(folder);
-  }
-  db = db.connect(folder, ['futbolin_stats']);
-  // leer primero si exista ya el registro esta
-  result = db.futbolin_stats.find({team: teamSanitized});
-  var stat = {};
-  if (result.length > 0){
-    var query = {
-      team : teamSanitized
-    };
+  if (teamSanitized == "yanier" || teamSanitized == "lourdes" || teamSanitized == "yahima" || teamSanitized == "papo" || teamSanitized == "jose"
+  || teamSanitized == "lourdes-yahima"
+  || teamSanitized == "lourdes-yanier"
+  || teamSanitized == "lourdes-papo"
+  || teamSanitized == "elisa-jose"
+  || teamSanitized == "elisa-lourdes"
+  || teamSanitized == "elisa-yahima"
+  || teamSanitized == "jose-yanier"
+  || teamSanitized == "yahima-yanier"){
+    var db = require('diskdb');
+    var resolve = require('path').resolve;
+    var folder = resolve('db/futbolin');
+    var fs = require('fs');
 
-    var dataToBeUpdate = {
-      count : result[0].count + 1,
-    };
+    if (!fs.existsSync(folder)){
+        fs.mkdirSync(folder);
+    }
+    db = db.connect(folder, ['futbolin_stats']);
+    // leer primero si exista ya el registro esta
+    result = db.futbolin_stats.find({team: teamSanitized});
+    var stat = {};
+    if (result.length > 0){
+      var query = {
+        team : teamSanitized
+      };
 
-    var options = {
-       multi: false,
-       upsert: false
-    };
+      var dataToBeUpdate = {
+        count : result[0].count + parseInt(count),
+      };
 
-    var updated = db.futbolin_stats.update(query, dataToBeUpdate, options);
+      var options = {
+         multi: false,
+         upsert: false
+      };
+
+      var updated = db.futbolin_stats.update(query, dataToBeUpdate, options);
+    } else {
+      stat = {
+        "team": teamSanitized,
+        "count": parseInt(count),
+      };
+      db.futbolin_stats.save(stat);
+    }
+    bot.reply(message, "Vale lo tengo :thumbsup:");
   } else {
-    stat = {
-      "team": teamSanitized,
-      "count": 1,
-    };
-    db.futbolin_stats.save(stat);
+    bot.reply(message, "Nope, el equipo " + teamSanitized + " no lo tengo registrado, debe haber sido un partido amistoso...");
   }
-
-
-
-  bot.reply(message, "Vale lo tengo :thumbsup:");
 });
 
 controller.hears(['futbolin-ask'],'direct_message,direct_mention', RecastaiMiddleware.hears,function(bot, message) {
 
-  bot.reply(message, "Ok, déjame revisar mis estadísticas...");
+  bot.reply(message, "Déjame revisar mis estadísticas...");
 
   var today = new Date();
   var dateISO = today.toISOString();
@@ -106,9 +132,9 @@ controller.hears(['futbolin-ask'],'direct_message,direct_mention', RecastaiMiddl
   db = db.connect(folder, ['futbolin_stats']);
   result = db.futbolin_stats.find();
   console.log(result);
-  result.sort(function(a,b) {return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);} );
+  result = result.sort(function(a,b) {return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);} );
   resultreverse = result.reverse();
-  resultText = "Según mis registros este es el ranking de elasbit:\n";
+  resultText = "Ve tu mismo/a, según mis registros este es el ranking de elasbit:\n";
   for (var i in resultreverse) {
     entity = resultreverse[i];
     resultText += entity.team + " - " + entity.count + "\n";
